@@ -8,6 +8,6 @@ namespace ProjecteM15Part1MVVMv0._1.ViewModel
 {
     class Vista1ViewModel
     {
-        int i = 0;
+        
     }
 }
