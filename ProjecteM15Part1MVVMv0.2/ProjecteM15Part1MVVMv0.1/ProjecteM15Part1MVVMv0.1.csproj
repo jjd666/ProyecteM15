@@ -175,12 +175,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="E:\M15-DUAL\Projectes\MVVM\Exemples\MvvmDialogs2\MvvmDialogs\MvvmDialogs.csproj">
-      <Project>{7BE06C50-5544-455F-886D-95322B468E25}</Project>
-      <Name>MvvmDialogs</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

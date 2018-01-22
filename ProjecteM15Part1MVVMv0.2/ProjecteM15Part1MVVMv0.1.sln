@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjecteM15Part1MVVMv0.1", "ProjecteM15Part1MVVMv0.1\ProjecteM15Part1MVVMv0.1.csproj", "{FD976A00-9806-4FE1-90E1-98EB5C55DBAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmDialogs", "E:\M15-DUAL\Projectes\MVVM\Exemples\MvvmDialogs2\MvvmDialogs\MvvmDialogs.csproj", "{7BE06C50-5544-455F-886D-95322B468E25}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmDialogs", "MvvmDialogs\MvvmDialogs.csproj", "{7BE06C50-5544-455F-886D-95322B468E25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
