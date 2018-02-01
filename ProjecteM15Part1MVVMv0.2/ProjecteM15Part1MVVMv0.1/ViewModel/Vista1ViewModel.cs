@@ -1,5 +1,4 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using MvvmDialogs.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
