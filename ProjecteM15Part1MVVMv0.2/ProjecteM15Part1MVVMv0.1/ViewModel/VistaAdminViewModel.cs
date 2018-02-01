@@ -15,6 +15,7 @@ namespace ProjecteM15Part1MVVMv0._1.ViewModel
 
         private List<cliente> _cliente;
         private cliente _selectedCliente;
+        private int _selectedIndexCliente;
         private List<pedido> _pedido;
         private pedido _selectedPedido;
         private List<repartidor> _repartidor;
@@ -22,27 +23,24 @@ namespace ProjecteM15Part1MVVMv0._1.ViewModel
 
         public List<cliente> Cliente
         {
-            get
-            {
-                return _cliente;
-            }
-            set
-            {
-                _cliente = value;
-                NotifyPropertyChanged();
-            }
+            get { return (_cliente); }
+            set { _cliente = value; NotifyPropertyChanged(); }
+        }
+
+        public int SelectedIndexCliente
+        {
+            get { return _selectedIndexCliente; }
+            set { _selectedIndexCliente = value; NotifyPropertyChanged(); }
         }
 
         public cliente SelectedCliente
         {
-            get
-            {
-                return _selectedCliente;
-            }
+            get { return (_selectedCliente); }
             set
             {
                 _selectedCliente = value;
-                FillCliente();
+                FillPedido();
+                FillRepartidor();
                 NotifyPropertyChanged();
             }
         }
@@ -108,17 +106,34 @@ namespace ProjecteM15Part1MVVMv0._1.ViewModel
 
         public VistaAdminViewModel()
         {
-            FillCliente();
+            FillCliente(0);
             FillPedido();
             FillRepartidor();
         }
-
-        private void FillCliente()
+        private void FillCliente(int index)
         {
+            Cliente = ctx.cliente.OrderBy(x => x.Nombre).ToList();
+            if (Cliente != null && index >= 0 && index < Cliente.Count)
+            {
+                SelectedCliente = Cliente[index];
+            }
+        }
+
+        private void FillCliente(cliente c)
+        {
+            FillCliente(0);
+            if (c != null)
+            {
+                SelectedCliente = Cliente.Where(x => x.DNI == c.DNI).FirstOrDefault();
+            }
 
         }
         private void FillPedido()
         {
+            if (SelectedCliente != null)
+            {
+                this.Pedido = SelectedCliente.pedido.OrderBy(x => x.idPedido).ToList();
+            }
 
         }
         private void FillRepartidor()

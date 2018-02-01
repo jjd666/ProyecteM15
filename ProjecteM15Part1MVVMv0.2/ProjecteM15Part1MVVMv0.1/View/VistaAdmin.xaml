@@ -6,18 +6,33 @@
         xmlns:local="clr-namespace:ProjecteM15Part1MVVMv0._1.View"
         xmlns:ViewModel="clr-namespace:ProjecteM15Part1MVVMv0._1.ViewModel" x:Class="ProjecteM15Part1MVVMv0._1.View.VistaClient"
         mc:Ignorable="d"
-        Title="VistaAdmin" Height="367" Width="470">
+        Title="VistaAdmin" Height="557.5" Width="663.5">
     <Grid>
         <Grid.DataContext>
             <ViewModel:VistaAdminViewModel/>
         </Grid.DataContext>
-        <DataGrid x:Name="dataGridClientes" HorizontalAlignment="Left" Margin="20,96,0,0" VerticalAlignment="Top" Height="225" Width="120" ItemsSource="{Binding Cliente}" SelectedItem="{Binding SelectedCliente}"/>
-        <DataGrid x:Name="dataGridPedidos" HorizontalAlignment="Left" Margin="161,96,0,0" VerticalAlignment="Top" Height="225" Width="120"/>
+        <DataGrid x:Name="dataGridClientes" HorizontalAlignment="Left" Margin="20,96,0,0" VerticalAlignment="Top" Height="158" Width="318" ItemsSource="{Binding Cliente}" SelectedItem="{Binding SelectedCliente}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding DNI}" ClipboardContentBinding="{x:Null}" Header="DNI"/>
+                <DataGridTextColumn Binding="{Binding Nombre}" ClipboardContentBinding="{x:Null}" Header="Nombre"/>
+                <DataGridTextColumn Binding="{Binding Telefono}" ClipboardContentBinding="{x:Null}" Header="Telefono"/>
+                <DataGridTextColumn Binding="{Binding Direccion}" ClipboardContentBinding="{x:Null}" Header="Direccion"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="dataGridPedidos" HorizontalAlignment="Left" Margin="20,307,0,0" VerticalAlignment="Top" Height="158" Width="508" ItemsSource="{Binding Pedido}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding idPedido}" Header="idPedido"/>
+                <DataGridTextColumn Binding="{Binding FechaPedido}" Header="FechaPedido"/>
+                <DataGridTextColumn Binding="{Binding FechaEntrega}" Header="FechaEntrega"/>
+                <DataGridTextColumn Binding="{Binding Entregado}" Header="Entregado"/>
+                <DataGridTextColumn Binding="{Binding Decripcion}" Header="Descripcion"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <Label x:Name="labelTablaClientes" Content="Tabla Clientes:" HorizontalAlignment="Left" Margin="20,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.537,0.577"/>
-        <Label x:Name="labelTablaPedidos" Content="Tabla Pedidos:" HorizontalAlignment="Left" Margin="161,65,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBoxRepartidores" HorizontalAlignment="Left" Height="19" Margin="308,96,0,0" VerticalAlignment="Top" Width="135" ItemsSource="{Binding Repartidor}" SelectedItem="{Binding SelectedRepartidor}" DisplayMemberPath="{Binding /Nombre}"/>
-        <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Height="56" Margin="308,209,0,0" TextWrapping="Wrap" Text="Descripción" VerticalAlignment="Top" Width="135"/>
-        <Button x:Name="buttonAceptar" Content="Aceptar" HorizontalAlignment="Left" Height="35" Margin="318,286,0,0" VerticalAlignment="Top" Width="110" Background="#FF0051FF" BorderBrush="#FF6FB0FF" BorderThickness="2" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="labelTablaPedidos" Content="Tabla Pedidos:" HorizontalAlignment="Left" Margin="20,276,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxRepartidores" HorizontalAlignment="Left" Height="19" Margin="418,96,0,0" VerticalAlignment="Top" Width="135" ItemsSource="{Binding Repartidor}" SelectedItem="{Binding SelectedRepartidor}" DisplayMemberPath="{Binding /Nombre}"/>
+        <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Height="121" Margin="418,133,0,0" TextWrapping="Wrap" Text="Descripción" VerticalAlignment="Top" Width="190"/>
+        <Button x:Name="buttonAceptar" Content="Aceptar" HorizontalAlignment="Left" Height="35" Margin="536,482,0,0" VerticalAlignment="Top" Width="110" Background="#FF0051FF" BorderBrush="#FF6FB0FF" BorderThickness="2" FontWeight="Bold" FontSize="14"/>
         <Label x:Name="labelTitulo" Content="Bienvenido Administrador" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
 
     </Grid>
