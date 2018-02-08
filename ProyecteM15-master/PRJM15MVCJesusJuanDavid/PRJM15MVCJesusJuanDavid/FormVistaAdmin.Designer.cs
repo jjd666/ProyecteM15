@@ -35,7 +35,7 @@
             this.labelTitol = new System.Windows.Forms.Label();
             this.comboBoxRepartidores = new System.Windows.Forms.ComboBox();
             this.labelRepartidores = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxdescrip = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonGuardar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
@@ -46,7 +46,9 @@
             // 
             this.dataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClientes.Location = new System.Drawing.Point(12, 64);
+            this.dataGridViewClientes.MultiSelect = false;
             this.dataGridViewClientes.Name = "dataGridViewClientes";
+            this.dataGridViewClientes.ReadOnly = true;
             this.dataGridViewClientes.Size = new System.Drawing.Size(165, 194);
             this.dataGridViewClientes.TabIndex = 0;
             // 
@@ -54,7 +56,9 @@
             // 
             this.dataGridViewPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPedidos.Location = new System.Drawing.Point(202, 64);
+            this.dataGridViewPedidos.MultiSelect = false;
             this.dataGridViewPedidos.Name = "dataGridViewPedidos";
+            this.dataGridViewPedidos.ReadOnly = true;
             this.dataGridViewPedidos.Size = new System.Drawing.Size(165, 194);
             this.dataGridViewPedidos.TabIndex = 1;
             // 
@@ -103,12 +107,12 @@
             this.labelRepartidores.TabIndex = 6;
             this.labelRepartidores.Text = "Repartidores:";
             // 
-            // textBox1
+            // textBoxdescrip
             // 
-            this.textBox1.Location = new System.Drawing.Point(425, 173);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 7;
+            this.textBoxdescrip.Location = new System.Drawing.Point(425, 173);
+            this.textBoxdescrip.Name = "textBoxdescrip";
+            this.textBoxdescrip.Size = new System.Drawing.Size(121, 20);
+            this.textBoxdescrip.TabIndex = 7;
             // 
             // label1
             // 
@@ -139,7 +143,7 @@
             this.ClientSize = new System.Drawing.Size(579, 281);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxdescrip);
             this.Controls.Add(this.labelRepartidores);
             this.Controls.Add(this.comboBoxRepartidores);
             this.Controls.Add(this.labelTitol);
@@ -157,16 +161,15 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridViewClientes;
-        private System.Windows.Forms.DataGridView dataGridViewPedidos;
         private System.Windows.Forms.Label labelClientes;
         private System.Windows.Forms.Label labelPedidos;
         private System.Windows.Forms.Label labelTitol;
-        private System.Windows.Forms.ComboBox comboBoxRepartidores;
         private System.Windows.Forms.Label labelRepartidores;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonGuardar;
+        public System.Windows.Forms.DataGridView dataGridViewClientes;
+        public System.Windows.Forms.DataGridView dataGridViewPedidos;
+        public System.Windows.Forms.ComboBox comboBoxRepartidores;
+        public System.Windows.Forms.TextBox textBoxdescrip;
+        public System.Windows.Forms.Button buttonGuardar;
     }
 }

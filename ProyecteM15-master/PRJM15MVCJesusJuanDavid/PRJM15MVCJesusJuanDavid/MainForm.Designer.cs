@@ -84,9 +84,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button buttonClient;
-        private System.Windows.Forms.Button buttonAdmin;
         private System.Windows.Forms.Label labelTitol;
+        public System.Windows.Forms.Button buttonClient;
+        public System.Windows.Forms.Button buttonAdmin;
     }
 }
