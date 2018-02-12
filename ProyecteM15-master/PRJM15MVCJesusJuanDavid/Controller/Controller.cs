@@ -57,6 +57,8 @@ namespace Controller
 
         private void ButtonGuardarClient_Click(object sender, EventArgs e)
         {
+            DateTime Hoy = DateTime.Today;
+
             cliente c = new cliente();
             pedido p = new pedido();
             c.DNI = f3.textBoxDNI.Text;
@@ -66,6 +68,14 @@ namespace Controller
 
             db.clientes.Add(c);
 
+            p.idPedido= db.pedidoes.Count() + 1;
+            p.FechaPedido = Hoy;
+            p.FechaEntrega= Hoy.AddDays(2);
+            p.Entregado ="0";
+            p.Decripcion = "Fragil";
+            p.cliente_DNI = f3.textBoxDNI.Text;
+
+            db.pedidoes.Add(p);
 
             int n = trySaveClient();
             if (n==1)
@@ -91,10 +101,22 @@ namespace Controller
             F.Pedido_idPedido = conv;
             F.Pedido_Cliente_DNI = f2.dataGridViewClientes.SelectedRows[0].Cells["DNI"].Value.ToString();
             F.Repartidor_idRepartidor = f2.comboBoxRepartidores.SelectedIndex + 1;//solo estara correcto si estan ordenador por idrepartidor
+
             db.facturas.Add(F);
             int n = trySaveAdmin();
-            llenartabla();
-            volerseleccionar(n);
+            if (n > 0)
+            { 
+                f3.textBoxDNI.Text = "";
+                f3.textBoxDireccion.Text = "";
+                f3.textBoxNombre.Text = "";
+                f3.textBoxTelefono.Text = "";
+                llenartabla();
+                volerseleccionar(n);
+            }
+            else
+            {
+                System.Console.WriteLine("ERROR");
+            }
 
         }
 
