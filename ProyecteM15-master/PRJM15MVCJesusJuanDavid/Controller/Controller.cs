@@ -46,11 +46,55 @@ namespace Controller
         }
         public void liseners()
         {
+            f3.buttonGuardar.Click += ButtonGuardar_Click;
             f1.buttonClient.Click += ButtonClient_Click;
             f1.buttonAdmin.Click += ButtonAdmin_Click;
             f2.dataGridViewClientes.SelectionChanged += DataGridViewPedidos_SelectionChanged;
 
 
+        }
+
+        private void ButtonGuardar_Click(object sender, EventArgs e)
+        {
+            cliente c = new cliente();
+            pedido p = new pedido();
+            c.DNI = f3.textBoxDNI.Text;
+            c.Direccion = f3.textBoxDireccion.Text;
+            c.Nombre = f3.textBoxNombre.Text;
+            c.Telefono = f3.textBoxTelefono.Text;
+            
+            p.idPedido = db.ped;
+            p.cliente_DNI = ;
+
+            db.clientes.Add(c);
+
+
+            int n = trySave();
+            if (n==1)
+            {
+                f3.textBoxDNI.Text = "";
+                f3.textBoxDireccion.Text = "";
+                f3.textBoxNombre.Text = "";
+                f3.textBoxTelefono.Text = "";
+                llenartabla();
+            }else
+            {
+                System.Console.WriteLine("ERROR");
+            }
+        }
+
+        protected int trySave()
+        {
+            try
+            {
+                db.SaveChanges();
+                return 1;
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine(e);
+                return 0;
+            }
         }
 
         private void ButtonClient_Click(object sender, EventArgs e)

@@ -154,16 +154,15 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Label labelTitol;
-        private System.Windows.Forms.TextBox textBoxDNI;
-        private System.Windows.Forms.TextBox textBoxDireccion;
-        private System.Windows.Forms.TextBox textBoxNombre;
-        private System.Windows.Forms.TextBox textBoxTelefono;
         private System.Windows.Forms.Label labelDNI;
         private System.Windows.Forms.Label labelDireccion;
         private System.Windows.Forms.Label labelNombre;
         private System.Windows.Forms.Label labelTelefono;
+        public System.Windows.Forms.TextBox textBoxDNI;
+        public System.Windows.Forms.TextBox textBoxDireccion;
+        public System.Windows.Forms.TextBox textBoxNombre;
+        public System.Windows.Forms.TextBox textBoxTelefono;
+        public System.Windows.Forms.Button buttonGuardar;
     }
 }
