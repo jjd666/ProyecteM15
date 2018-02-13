@@ -38,6 +38,8 @@
             this.labelDireccion = new System.Windows.Forms.Label();
             this.labelNombre = new System.Windows.Forms.Label();
             this.labelTelefono = new System.Windows.Forms.Label();
+            this.labelDescripcion = new System.Windows.Forms.Label();
+            this.textBoxDescripcion = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonGuardar
@@ -45,7 +47,7 @@
             this.buttonGuardar.BackColor = System.Drawing.Color.Blue;
             this.buttonGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGuardar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonGuardar.Location = new System.Drawing.Point(27, 275);
+            this.buttonGuardar.Location = new System.Drawing.Point(123, 281);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(88, 34);
             this.buttonGuardar.TabIndex = 1;
@@ -58,9 +60,9 @@
             this.labelTitol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitol.Location = new System.Drawing.Point(12, 9);
             this.labelTitol.Name = "labelTitol";
-            this.labelTitol.Size = new System.Drawing.Size(119, 16);
+            this.labelTitol.Size = new System.Drawing.Size(151, 16);
             this.labelTitol.TabIndex = 2;
-            this.labelTitol.Text = "Benvingut Client";
+            this.labelTitol.Text = "Benvingut Nou Client";
             // 
             // textBoxDNI
             // 
@@ -130,12 +132,31 @@
             this.labelTelefono.TabIndex = 10;
             this.labelTelefono.Text = "Telefono:";
             // 
+            // labelDescripcion
+            // 
+            this.labelDescripcion.AutoSize = true;
+            this.labelDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDescripcion.Location = new System.Drawing.Point(171, 135);
+            this.labelDescripcion.Name = "labelDescripcion";
+            this.labelDescripcion.Size = new System.Drawing.Size(121, 13);
+            this.labelDescripcion.TabIndex = 11;
+            this.labelDescripcion.Text = "Descripcion Pedido:";
+            // 
+            // textBoxDescripcion
+            // 
+            this.textBoxDescripcion.Location = new System.Drawing.Point(174, 151);
+            this.textBoxDescripcion.Name = "textBoxDescripcion";
+            this.textBoxDescripcion.Size = new System.Drawing.Size(127, 20);
+            this.textBoxDescripcion.TabIndex = 12;
+            // 
             // FormVistaClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(202, 327);
+            this.ClientSize = new System.Drawing.Size(339, 327);
+            this.Controls.Add(this.textBoxDescripcion);
+            this.Controls.Add(this.labelDescripcion);
             this.Controls.Add(this.labelTelefono);
             this.Controls.Add(this.labelNombre);
             this.Controls.Add(this.labelDireccion);
@@ -164,5 +185,7 @@
         public System.Windows.Forms.TextBox textBoxNombre;
         public System.Windows.Forms.TextBox textBoxTelefono;
         public System.Windows.Forms.Button buttonGuardar;
+        private System.Windows.Forms.Label labelDescripcion;
+        public System.Windows.Forms.TextBox textBoxDescripcion;
     }
 }

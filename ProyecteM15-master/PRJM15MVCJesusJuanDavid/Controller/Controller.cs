@@ -72,7 +72,7 @@ namespace Controller
             p.FechaPedido = Hoy;
             p.FechaEntrega= Hoy.AddDays(2);
             p.Entregado ="0";
-            p.Decripcion = "Fragil";
+            p.Decripcion = f3.textBoxDescripcion.Text;
             p.cliente_DNI = f3.textBoxDNI.Text;
 
             db.pedidoes.Add(p);
@@ -189,6 +189,7 @@ namespace Controller
 
 
         }
+
         protected clienteDTO clientselectet() {
 
             if (f2.dataGridViewClientes.SelectedRows.Count == 0)
