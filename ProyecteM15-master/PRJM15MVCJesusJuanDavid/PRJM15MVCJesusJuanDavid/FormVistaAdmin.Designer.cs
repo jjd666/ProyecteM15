@@ -36,6 +36,8 @@
             this.comboBoxRepartidores = new System.Windows.Forms.ComboBox();
             this.labelRepartidores = new System.Windows.Forms.Label();
             this.buttonGuardar = new System.Windows.Forms.Button();
+            this.buttonsalirf2 = new System.Windows.Forms.Button();
+            this.buttonmostrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPedidos)).BeginInit();
             this.SuspendLayout();
@@ -112,12 +114,36 @@
             this.buttonGuardar.BackColor = System.Drawing.Color.Blue;
             this.buttonGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGuardar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonGuardar.Location = new System.Drawing.Point(614, 319);
+            this.buttonGuardar.Location = new System.Drawing.Point(616, 237);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(88, 34);
             this.buttonGuardar.TabIndex = 9;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = false;
+            // 
+            // buttonsalirf2
+            // 
+            this.buttonsalirf2.BackColor = System.Drawing.Color.Blue;
+            this.buttonsalirf2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonsalirf2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonsalirf2.Location = new System.Drawing.Point(616, 317);
+            this.buttonsalirf2.Name = "buttonsalirf2";
+            this.buttonsalirf2.Size = new System.Drawing.Size(88, 34);
+            this.buttonsalirf2.TabIndex = 10;
+            this.buttonsalirf2.Text = "Salir";
+            this.buttonsalirf2.UseVisualStyleBackColor = false;
+            // 
+            // buttonmostrar
+            // 
+            this.buttonmostrar.BackColor = System.Drawing.Color.Blue;
+            this.buttonmostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonmostrar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonmostrar.Location = new System.Drawing.Point(616, 182);
+            this.buttonmostrar.Name = "buttonmostrar";
+            this.buttonmostrar.Size = new System.Drawing.Size(88, 49);
+            this.buttonmostrar.TabIndex = 11;
+            this.buttonmostrar.Text = "Mostrar Factura";
+            this.buttonmostrar.UseVisualStyleBackColor = false;
             // 
             // FormVistaAdmin
             // 
@@ -125,6 +151,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(716, 363);
+            this.ControlBox = false;
+            this.Controls.Add(this.buttonmostrar);
+            this.Controls.Add(this.buttonsalirf2);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.labelRepartidores);
             this.Controls.Add(this.comboBoxRepartidores);
@@ -151,5 +180,7 @@
         public System.Windows.Forms.DataGridView dataGridViewPedidos;
         public System.Windows.Forms.ComboBox comboBoxRepartidores;
         public System.Windows.Forms.Button buttonGuardar;
+        public System.Windows.Forms.Button buttonsalirf2;
+        public System.Windows.Forms.Button buttonmostrar;
     }
 }

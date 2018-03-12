@@ -21,6 +21,7 @@ namespace Model
 
 
         }
+        
 
         //public repartidorDTO(int idRepartidor)
         //{

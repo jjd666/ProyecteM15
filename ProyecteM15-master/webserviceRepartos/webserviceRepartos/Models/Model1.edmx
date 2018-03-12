@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="repartosssModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="administrador">
+          <Key>
+            <PropertyRef Name="idAdministrador" />
+          </Key>
+          <Property Name="idAdministrador" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="FechaContratacion" Type="date" />
+          <Property Name="DNIadmin" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="DNI" />
+          </Key>
+          <Property Name="DNI" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="factura">
+          <Key>
+            <PropertyRef Name="idFactura" />
+          </Key>
+          <Property Name="idFactura" Type="int" Nullable="false" />
+          <Property Name="Entrega" Type="smallint" />
+          <Property Name="Pedido_idPedido" Type="int" Nullable="false" />
+          <Property Name="Pedido_Cliente_DNI" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Repartidor_idRepartidor" Type="int" Nullable="false" />
+          <Property Name="Administrador_idAdministrador" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedido">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="int" Nullable="false" />
+          <Property Name="FechaPedido" Type="date" Nullable="false" />
+          <Property Name="FechaEntrega" Type="date" Nullable="false" />
+          <Property Name="Entregado" Type="varchar" MaxLength="45" />
+          <Property Name="Decripcion" Type="varchar" MaxLength="100" />
+          <Property Name="cliente_DNI" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repartidor">
+          <Key>
+            <PropertyRef Name="idRepartidor" />
+          </Key>
+          <Property Name="idRepartidor" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="DNIrep" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Zona" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_Factura_Administrador1">
+          <End Role="administrador" Type="Self.administrador" Multiplicity="1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="administrador">
+              <PropertyRef Name="idAdministrador" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="Administrador_idAdministrador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Factura_Pedido1">
+          <End Role="pedido" Type="Self.pedido" Multiplicity="1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="Pedido_idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Factura_Repartidor1">
+          <End Role="repartidor" Type="Self.repartidor" Multiplicity="1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repartidor">
+              <PropertyRef Name="idRepartidor" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="Repartidor_idRepartidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pedido_cliente1">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+          <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="DNI" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="cliente_DNI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="repartosssModelStoreContainer">
+          <EntitySet Name="administrador" EntityType="Self.administrador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="factura" EntityType="Self.factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pedido" EntityType="Self.pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="repartidor" EntityType="Self.repartidor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_Factura_Administrador1" Association="Self.fk_Factura_Administrador1">
+            <End Role="administrador" EntitySet="administrador" />
+            <End Role="factura" EntitySet="factura" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Factura_Pedido1" Association="Self.fk_Factura_Pedido1">
+            <End Role="pedido" EntitySet="pedido" />
+            <End Role="factura" EntitySet="factura" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Factura_Repartidor1" Association="Self.fk_Factura_Repartidor1">
+            <End Role="repartidor" EntitySet="repartidor" />
+            <End Role="factura" EntitySet="factura" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pedido_cliente1" Association="Self.fk_pedido_cliente1">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="repartosssModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="administrador">
+          <Key>
+            <PropertyRef Name="idAdministrador" />
+          </Key>
+          <Property Name="idAdministrador" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaContratacion" Type="DateTime" Precision="0" />
+          <Property Name="DNIadmin" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="facturas" Relationship="Self.fk_Factura_Administrador1" FromRole="administrador" ToRole="factura" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="DNI" />
+          </Key>
+          <Property Name="DNI" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="pedidoes" Relationship="Self.fk_pedido_cliente1" FromRole="cliente" ToRole="pedido" />
+        </EntityType>
+        <EntityType Name="factura">
+          <Key>
+            <PropertyRef Name="idFactura" />
+          </Key>
+          <Property Name="idFactura" Type="Int32" Nullable="false" />
+          <Property Name="Entrega" Type="Int16" />
+          <Property Name="Pedido_idPedido" Type="Int32" Nullable="false" />
+          <Property Name="Pedido_Cliente_DNI" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Repartidor_idRepartidor" Type="Int32" Nullable="false" />
+          <Property Name="Administrador_idAdministrador" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="administrador" Relationship="Self.fk_Factura_Administrador1" FromRole="factura" ToRole="administrador" />
+          <NavigationProperty Name="pedido" Relationship="Self.fk_Factura_Pedido1" FromRole="factura" ToRole="pedido" />
+          <NavigationProperty Name="repartidor" Relationship="Self.fk_Factura_Repartidor1" FromRole="factura" ToRole="repartidor" />
+        </EntityType>
+        <EntityType Name="pedido">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="Int32" Nullable="false" />
+          <Property Name="FechaPedido" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaEntrega" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Entregado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Decripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cliente_DNI" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="cliente" Relationship="Self.fk_pedido_cliente1" FromRole="pedido" ToRole="cliente" />
+          <NavigationProperty Name="facturas" Relationship="Self.fk_Factura_Pedido1" FromRole="pedido" ToRole="factura" />
+        </EntityType>
+        <EntityType Name="repartidor">
+          <Key>
+            <PropertyRef Name="idRepartidor" />
+          </Key>
+          <Property Name="idRepartidor" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNIrep" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Zona" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="facturas" Relationship="Self.fk_Factura_Repartidor1" FromRole="repartidor" ToRole="factura" />
+        </EntityType>
+        <Association Name="fk_Factura_Administrador1">
+          <End Role="administrador" Type="Self.administrador" Multiplicity="1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="administrador">
+              <PropertyRef Name="idAdministrador" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="Administrador_idAdministrador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pedido_cliente1">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+          <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="DNI" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="cliente_DNI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Factura_Pedido1">
+          <End Role="pedido" Type="Self.pedido" Multiplicity="1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="Pedido_idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Factura_Repartidor1">
+          <End Role="repartidor" Type="Self.repartidor" Multiplicity="1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repartidor">
+              <PropertyRef Name="idRepartidor" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="Repartidor_idRepartidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="repartosssEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="administradors" EntityType="Self.administrador" />
+          <EntitySet Name="clientes" EntityType="Self.cliente" />
+          <EntitySet Name="facturas" EntityType="Self.factura" />
+          <EntitySet Name="pedidoes" EntityType="Self.pedido" />
+          <EntitySet Name="repartidors" EntityType="Self.repartidor" />
+          <AssociationSet Name="fk_Factura_Administrador1" Association="Self.fk_Factura_Administrador1">
+            <End Role="administrador" EntitySet="administradors" />
+            <End Role="factura" EntitySet="facturas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pedido_cliente1" Association="Self.fk_pedido_cliente1">
+            <End Role="cliente" EntitySet="clientes" />
+            <End Role="pedido" EntitySet="pedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Factura_Pedido1" Association="Self.fk_Factura_Pedido1">
+            <End Role="pedido" EntitySet="pedidoes" />
+            <End Role="factura" EntitySet="facturas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Factura_Repartidor1" Association="Self.fk_Factura_Repartidor1">
+            <End Role="repartidor" EntitySet="repartidors" />
+            <End Role="factura" EntitySet="facturas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="repartosssModelStoreContainer" CdmEntityContainer="repartosssEntities">
+          <EntitySetMapping Name="administradors">
+            <EntityTypeMapping TypeName="repartosssModel.administrador">
+              <MappingFragment StoreEntitySet="administrador">
+                <ScalarProperty Name="idAdministrador" ColumnName="idAdministrador" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FechaContratacion" ColumnName="FechaContratacion" />
+                <ScalarProperty Name="DNIadmin" ColumnName="DNIadmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="repartosssModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facturas">
+            <EntityTypeMapping TypeName="repartosssModel.factura">
+              <MappingFragment StoreEntitySet="factura">
+                <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+                <ScalarProperty Name="Entrega" ColumnName="Entrega" />
+                <ScalarProperty Name="Pedido_idPedido" ColumnName="Pedido_idPedido" />
+                <ScalarProperty Name="Pedido_Cliente_DNI" ColumnName="Pedido_Cliente_DNI" />
+                <ScalarProperty Name="Repartidor_idRepartidor" ColumnName="Repartidor_idRepartidor" />
+                <ScalarProperty Name="Administrador_idAdministrador" ColumnName="Administrador_idAdministrador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedidoes">
+            <EntityTypeMapping TypeName="repartosssModel.pedido">
+              <MappingFragment StoreEntitySet="pedido">
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
+                <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+                <ScalarProperty Name="Entregado" ColumnName="Entregado" />
+                <ScalarProperty Name="Decripcion" ColumnName="Decripcion" />
+                <ScalarProperty Name="cliente_DNI" ColumnName="cliente_DNI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repartidors">
+            <EntityTypeMapping TypeName="repartosssModel.repartidor">
+              <MappingFragment StoreEntitySet="repartidor">
+                <ScalarProperty Name="idRepartidor" ColumnName="idRepartidor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="DNIrep" ColumnName="DNIrep" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram DiagramId="74a5a3f5214d4daeaaa955ebd38a7bb4" Name="Diagram1">
+        <EntityTypeShape EntityType="repartosssModel.administrador" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="repartosssModel.cliente" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="repartosssModel.factura" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="repartosssModel.pedido" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="repartosssModel.repartidor" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="repartosssModel.fk_Factura_Administrador1" ManuallyRouted="false" />
+        <AssociationConnector Association="repartosssModel.fk_pedido_cliente1" ManuallyRouted="false" />
+        <AssociationConnector Association="repartosssModel.fk_Factura_Pedido1" ManuallyRouted="false" />
+        <AssociationConnector Association="repartosssModel.fk_Factura_Repartidor1" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

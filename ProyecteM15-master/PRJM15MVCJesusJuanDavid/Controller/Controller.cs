@@ -15,6 +15,7 @@ namespace Controller
         MainForm f1 = new MainForm();
         FormVistaAdmin f2 = new FormVistaAdmin();
         FormVistaClient f3 = new FormVistaClient();
+        vistaFacturas f4 = new vistaFacturas();
         repartosssEntities db = new repartosssEntities();
         
         public void init()
@@ -51,8 +52,53 @@ namespace Controller
             f1.buttonClient.Click += ButtonClient_Click;
             f1.buttonAdmin.Click += ButtonAdmin_Click;
             f2.dataGridViewClientes.SelectionChanged += DataGridViewPedidos_SelectionChanged;
+            f3.textBoxNombre.KeyPress += TextBoxNombre_KeyPress;
+            f3.buttonsalir.Click += Buttonsalir_Click;
+            f2.buttonsalirf2.Click += Buttonsalirf2_Click;
+            f2.buttonmostrar.Click += Buttonmostrar_Click;
+            f4.buttonSalir.Click += ButtonSalir_Click;
 
 
+        }
+
+        private void ButtonSalir_Click(object sender, EventArgs e)
+        {
+            f4.Visible = false;
+        }
+
+        private void Buttonmostrar_Click(object sender, EventArgs e)
+        {
+            f4.Visible = true;
+        }
+
+        private void Buttonsalirf2_Click(object sender, EventArgs e)
+        {
+            f2.Hide();
+        }
+
+        private void Buttonsalir_Click(object sender, EventArgs e)
+        {
+            f3.Hide();
+        }
+
+        private void TextBoxNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            {
+                if (char.IsLetter((char)e.KeyChar)) {
+                    e.Handled = false;
+                }
+                else if (char.IsControl((char)e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else if (char.IsSeparator((char)e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                    e.Handled = true;
+                        
+            }
         }
 
         private void ButtonGuardarClient_Click(object sender, EventArgs e)
@@ -160,7 +206,10 @@ namespace Controller
 
         private void ButtonClient_Click(object sender, EventArgs e)
         {
+            
+            
             f3.Show();
+            
         }
 
         private void DataGridViewPedidos_SelectionChanged(object sender, EventArgs e)
@@ -179,7 +228,17 @@ namespace Controller
             try
             {
                 f2.dataGridViewPedidos.DataSource = db.pedidoes.Where(x => C.DNI.Equals(x.cliente_DNI)).ToList().Select(x => new pedidoDTO(x)).ToList();
-                
+                int a = Convert.ToInt32(f2.dataGridViewPedidos.SelectedRows[0].Cells["idPedido"].Value.ToString());
+                f4.label1.Text = C.Nombre;
+                //f4.dataGridViewFacturasClient.DataSource = db.facturas.Where(x => x.Pedido_idPedido == a).ToList().Select(x =>new facturaDTO(x)).ToList();
+                var qq = from factura b in db.facturas
+                         join qw in db.repartidors on b.Repartidor_idRepartidor equals qw.idRepartidor
+                         where(b.Pedido_idPedido==a)
+                         orderby b.Entrega,qw.Nombre
+                         select new { b.idFactura,qw.Nombre,qw.Zona,qw.DNIrep,b.Entrega, };
+                f4.dataGridViewFacturasClient.DataSource = qq.ToList();
+
+
             }
             catch (Exception)
             {
@@ -205,7 +264,12 @@ namespace Controller
 
         private void ButtonAdmin_Click(object sender, EventArgs e)
         {
+            
             f2.Show();
+            
+
+
+
             llenartabla();
         }
     }

@@ -40,6 +40,7 @@
             this.labelTelefono = new System.Windows.Forms.Label();
             this.labelDescripcion = new System.Windows.Forms.Label();
             this.textBoxDescripcion = new System.Windows.Forms.TextBox();
+            this.buttonsalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonGuardar
@@ -47,7 +48,7 @@
             this.buttonGuardar.BackColor = System.Drawing.Color.Blue;
             this.buttonGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGuardar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonGuardar.Location = new System.Drawing.Point(123, 281);
+            this.buttonGuardar.Location = new System.Drawing.Point(239, 281);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(88, 34);
             this.buttonGuardar.TabIndex = 1;
@@ -149,12 +150,26 @@
             this.textBoxDescripcion.Size = new System.Drawing.Size(127, 20);
             this.textBoxDescripcion.TabIndex = 12;
             // 
+            // buttonsalir
+            // 
+            this.buttonsalir.BackColor = System.Drawing.Color.Blue;
+            this.buttonsalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonsalir.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonsalir.Location = new System.Drawing.Point(15, 281);
+            this.buttonsalir.Name = "buttonsalir";
+            this.buttonsalir.Size = new System.Drawing.Size(88, 34);
+            this.buttonsalir.TabIndex = 14;
+            this.buttonsalir.Text = "Salir";
+            this.buttonsalir.UseVisualStyleBackColor = false;
+            // 
             // FormVistaClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(339, 327);
+            this.ControlBox = false;
+            this.Controls.Add(this.buttonsalir);
             this.Controls.Add(this.textBoxDescripcion);
             this.Controls.Add(this.labelDescripcion);
             this.Controls.Add(this.labelTelefono);
@@ -187,5 +202,6 @@
         public System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Label labelDescripcion;
         public System.Windows.Forms.TextBox textBoxDescripcion;
+        public System.Windows.Forms.Button buttonsalir;
     }
 }
