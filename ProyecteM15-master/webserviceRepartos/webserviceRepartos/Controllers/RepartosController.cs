@@ -12,7 +12,7 @@ namespace webserviceRepartos.Controllers
     {
 
         // GET: api/contactes
-        [Route("api/contactes")]
+        [Route("api/clientes")]
         public HttpResponseMessage Get()
         {
             var contactes = repartosRepository.GetAllContactes();
@@ -20,7 +20,7 @@ namespace webserviceRepartos.Controllers
             return response;
         }
 
-        [Route("api/contacte/{id?}")]
+        [Route("api/clientes/{id?}")]
         public HttpResponseMessage Put(String id, [FromBody]pedido val)
         {
             var contacte = repartosRepository.UpdateContacte(id, val);
@@ -28,5 +28,14 @@ namespace webserviceRepartos.Controllers
             return response;
         }
 
+        [Route("api/repartidores")]
+        public HttpResponseMessage getrep()
+        {
+            var contactes = repartosRepository.GetRepart();
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, contactes);
+            return response;
+        }
+
     }
+
 }

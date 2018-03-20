@@ -9,9 +9,10 @@
 
 namespace webserviceRepartos.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,7 +25,7 @@ namespace webserviceRepartos.Models
         public string Nombre { get; set; }
         public string Telefono { get; set; }
         public string Direccion { get; set; }
-    
+    [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<pedido> pedidoes { get; set; }
     }

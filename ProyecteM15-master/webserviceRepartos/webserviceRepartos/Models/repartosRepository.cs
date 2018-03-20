@@ -8,28 +8,15 @@ namespace webserviceRepartos.Models
     public class repartosRepository
     {
 
-        private static repartosssEntities dataContext = new repartosssEntities();
+        private static RepartosEntities dataContext = new RepartosEntities();
         public static List<cliente> GetAllContactes()
         {
-            //var qq = from c in dataContext.clientes
-            //         join p in dataContext.pedidoes on c.DNI equals p.cliente_DNI
-            //         where (p.Entregado == "NO")
-            //         orderby p.FechaPedido
-            //         select new { c.DNI, c.Nombre, c.Telefono, c.Direccion };
 
-            //List<cliente>
 
             List<cliente> lc = dataContext.pedidoes.Where(x => x.cliente_DNI.Equals(x.cliente.DNI)&& x.Entregado.Equals("NO"))
                    .OrderBy(x=>x.FechaPedido).Select(x => x.cliente).ToList();
 
-           // List<cliente> lc = dataContext.pedidoes.Where(x => x.cliente_DNI.Equals(x.cliente.DNI) && x.Decripcion.Equals("MAL"))
-                   //.OrderBy(x => x.FechaPedido).Select(x => x.cliente).ToList();
-
-
-
-
-            //List<cliente> s = qq.ToList();
-            //List < cliente > lc = dataContext.clientes.ToList();
+        
             return lc;
         }
 
@@ -73,6 +60,12 @@ namespace webserviceRepartos.Models
             {
                 return null;
             }
+        }
+
+        public static List<repartidor> GetRepart()
+        {
+            List<repartidor> a = dataContext.repartidors.ToList();
+            return a;
         }
 
 

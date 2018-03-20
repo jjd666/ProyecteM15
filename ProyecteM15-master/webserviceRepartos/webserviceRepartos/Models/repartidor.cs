@@ -9,9 +9,10 @@
 
 namespace webserviceRepartos.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class repartidor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +20,14 @@ namespace webserviceRepartos.Models
         {
             this.facturas = new HashSet<factura>();
         }
-    
+        [JsonIgnore]
         public int idRepartidor { get; set; }
         public string Nombre { get; set; }
+        [JsonIgnore]
         public string DNIrep { get; set; }
+        [JsonIgnore]
         public string Zona { get; set; }
-    
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<factura> facturas { get; set; }
     }

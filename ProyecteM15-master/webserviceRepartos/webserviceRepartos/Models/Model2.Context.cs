@@ -13,10 +13,10 @@ namespace webserviceRepartos.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class repartosssEntities : DbContext
+    public partial class RepartosEntities : DbContext
     {
-        public repartosssEntities()
-            : base("name=repartosssEntities")
+        public RepartosEntities()
+            : base("name=RepartosEntities")
         {
         }
     

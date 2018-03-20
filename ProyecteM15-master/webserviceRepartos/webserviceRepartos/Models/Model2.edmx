@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="repartosssModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="RepartosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="administrador">
           <Key>
             <PropertyRef Name="idAdministrador" />
@@ -102,7 +102,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="repartosssModelStoreContainer">
+        <EntityContainer Name="RepartosModelStoreContainer">
           <EntitySet Name="administrador" EntityType="Self.administrador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="factura" EntityType="Self.factura" Schema="dbo" store:Type="Tables" />
@@ -129,7 +129,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="repartosssModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="RepartosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="administrador">
           <Key>
             <PropertyRef Name="idAdministrador" />
@@ -235,7 +235,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="repartosssEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RepartosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="administradors" EntityType="Self.administrador" />
           <EntitySet Name="clientes" EntityType="Self.cliente" />
           <EntitySet Name="facturas" EntityType="Self.factura" />
@@ -263,9 +263,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="repartosssModelStoreContainer" CdmEntityContainer="repartosssEntities">
+        <EntityContainerMapping StorageEntityContainer="RepartosModelStoreContainer" CdmEntityContainer="RepartosEntities">
           <EntitySetMapping Name="administradors">
-            <EntityTypeMapping TypeName="repartosssModel.administrador">
+            <EntityTypeMapping TypeName="RepartosModel.administrador">
               <MappingFragment StoreEntitySet="administrador">
                 <ScalarProperty Name="idAdministrador" ColumnName="idAdministrador" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -275,7 +275,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="clientes">
-            <EntityTypeMapping TypeName="repartosssModel.cliente">
+            <EntityTypeMapping TypeName="RepartosModel.cliente">
               <MappingFragment StoreEntitySet="cliente">
                 <ScalarProperty Name="DNI" ColumnName="DNI" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -285,7 +285,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="facturas">
-            <EntityTypeMapping TypeName="repartosssModel.factura">
+            <EntityTypeMapping TypeName="RepartosModel.factura">
               <MappingFragment StoreEntitySet="factura">
                 <ScalarProperty Name="idFactura" ColumnName="idFactura" />
                 <ScalarProperty Name="Entrega" ColumnName="Entrega" />
@@ -297,7 +297,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="pedidoes">
-            <EntityTypeMapping TypeName="repartosssModel.pedido">
+            <EntityTypeMapping TypeName="RepartosModel.pedido">
               <MappingFragment StoreEntitySet="pedido">
                 <ScalarProperty Name="idPedido" ColumnName="idPedido" />
                 <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
@@ -309,7 +309,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="repartidors">
-            <EntityTypeMapping TypeName="repartosssModel.repartidor">
+            <EntityTypeMapping TypeName="RepartosModel.repartidor">
               <MappingFragment StoreEntitySet="repartidor">
                 <ScalarProperty Name="idRepartidor" ColumnName="idRepartidor" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -339,18 +339,6 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams>
-      <Diagram DiagramId="74a5a3f5214d4daeaaa955ebd38a7bb4" Name="Diagram1">
-        <EntityTypeShape EntityType="repartosssModel.administrador" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="repartosssModel.cliente" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="repartosssModel.factura" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="repartosssModel.pedido" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="repartosssModel.repartidor" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
-        <AssociationConnector Association="repartosssModel.fk_Factura_Administrador1" ManuallyRouted="false" />
-        <AssociationConnector Association="repartosssModel.fk_pedido_cliente1" ManuallyRouted="false" />
-        <AssociationConnector Association="repartosssModel.fk_Factura_Pedido1" ManuallyRouted="false" />
-        <AssociationConnector Association="repartosssModel.fk_Factura_Repartidor1" ManuallyRouted="false" />
-      </Diagram>
-    </Diagrams>
+    <Diagrams></Diagrams>
   </Designer>
 </edmx:Edmx>
