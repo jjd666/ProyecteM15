@@ -12,6 +12,8 @@ namespace webserviceRepartos.Controllers
     {
 
         // GET: api/contactes
+
+            //get de clientes con pedidos no entregados
         [Route("api/clientes")]
         public HttpResponseMessage Get()
         {
@@ -20,6 +22,7 @@ namespace webserviceRepartos.Controllers
             return response;
         }
 
+            // put de cuando se completa la entrega de un pedido (cambia el estado de entrega del pedido)
         [Route("api/clientes/{id?}")]
         public HttpResponseMessage Put(String id, [FromBody]pedido val)
         {
@@ -28,6 +31,7 @@ namespace webserviceRepartos.Controllers
             return response;
         }
 
+            //muestra todos los repartidores
         [Route("api/repartidores")]
         public HttpResponseMessage getrep()
         {
