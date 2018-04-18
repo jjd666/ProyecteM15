@@ -27,6 +27,8 @@ namespace webserviceRepartos.Models
         public string DNIrep { get; set; }
         [JsonIgnore]
         public string Zona { get; set; }
+
+        //con jsonignore evitamos que se muestren mas datos innecesarios en la consulta
         [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<factura> facturas { get; set; }
