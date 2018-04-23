@@ -9,23 +9,26 @@
 
 namespace webserviceRepartos.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class administrador
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public administrador()
         {
-            this.facturas = new HashSet<factura>();
+            this.factura = new HashSet<factura>();
         }
     
         public int idAdministrador { get; set; }
         public string Nombre { get; set; }
         public Nullable<System.DateTime> FechaContratacion { get; set; }
         public string DNIadmin { get; set; }
-    
+
+        [JsonIgnore]
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<factura> facturas { get; set; }
+        public virtual ICollection<factura> factura { get; set; }
     }
 }

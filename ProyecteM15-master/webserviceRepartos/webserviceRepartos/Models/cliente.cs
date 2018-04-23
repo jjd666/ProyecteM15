@@ -18,17 +18,15 @@ namespace webserviceRepartos.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public cliente()
         {
-            this.pedidoes = new HashSet<pedido>();
+            this.pedido = new HashSet<pedido>();
         }
     
         public string DNI { get; set; }
         public string Nombre { get; set; }
         public string Telefono { get; set; }
         public string Direccion { get; set; }
-
-        //con jsonignore evitamos que se muestren mas datos innecesarios en la consulta
         [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<pedido> pedidoes { get; set; }
+        public virtual ICollection<pedido> pedido { get; set; }
     }
 }

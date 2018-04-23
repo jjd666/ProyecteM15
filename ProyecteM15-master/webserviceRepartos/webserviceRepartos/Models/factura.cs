@@ -15,7 +15,7 @@ namespace webserviceRepartos.Models
     public partial class factura
     {
         public int idFactura { get; set; }
-        public Nullable<short> Entrega { get; set; }
+        public bool Entrega { get; set; }
         public int Pedido_idPedido { get; set; }
         public string Pedido_Cliente_DNI { get; set; }
         public int Repartidor_idRepartidor { get; set; }

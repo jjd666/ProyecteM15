@@ -9,15 +9,16 @@
 
 namespace webserviceRepartos.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class pedido
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public pedido()
         {
-            this.facturas = new HashSet<factura>();
+            this.factura = new HashSet<factura>();
         }
     
         public int idPedido { get; set; }
@@ -28,7 +29,8 @@ namespace webserviceRepartos.Models
         public string cliente_DNI { get; set; }
     
         public virtual cliente cliente { get; set; }
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<factura> facturas { get; set; }
+        public virtual ICollection<factura> factura { get; set; }
     }
 }

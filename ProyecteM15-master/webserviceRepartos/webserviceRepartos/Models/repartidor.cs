@@ -18,19 +18,17 @@ namespace webserviceRepartos.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public repartidor()
         {
-            this.facturas = new HashSet<factura>();
+            this.factura = new HashSet<factura>();
         }
-        [JsonIgnore]
+    
         public int idRepartidor { get; set; }
         public string Nombre { get; set; }
-        [JsonIgnore]
         public string DNIrep { get; set; }
-        [JsonIgnore]
         public string Zona { get; set; }
-
-        //con jsonignore evitamos que se muestren mas datos innecesarios en la consulta
+        public bool Activo { get; set; }
+        public string Contrasenya { get; set; }
         [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<factura> facturas { get; set; }
+        public virtual ICollection<factura> factura { get; set; }
     }
 }

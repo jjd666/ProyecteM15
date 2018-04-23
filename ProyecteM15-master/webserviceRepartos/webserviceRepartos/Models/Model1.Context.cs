@@ -13,10 +13,10 @@ namespace webserviceRepartos.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RepartosEntities : DbContext
+    public partial class repartosssEntities1 : DbContext
     {
-        public RepartosEntities()
-            : base("name=RepartosEntities")
+        public repartosssEntities1()
+            : base("name=repartosssEntities1")
         {
         }
     
@@ -25,10 +25,10 @@ namespace webserviceRepartos.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<administrador> administradors { get; set; }
-        public virtual DbSet<cliente> clientes { get; set; }
-        public virtual DbSet<factura> facturas { get; set; }
-        public virtual DbSet<pedido> pedidoes { get; set; }
-        public virtual DbSet<repartidor> repartidors { get; set; }
+        public virtual DbSet<administrador> administrador { get; set; }
+        public virtual DbSet<cliente> cliente { get; set; }
+        public virtual DbSet<factura> factura { get; set; }
+        public virtual DbSet<pedido> pedido { get; set; }
+        public virtual DbSet<repartidor> repartidor { get; set; }
     }
 }

@@ -40,6 +40,35 @@ namespace webserviceRepartos.Controllers
             return response;
         }
 
+
+        [Route("api/cliente/{id}")]
+        public HttpResponseMessage getclitone(string id)
+        {
+
+            var cliente = repartosRepository.GetContacte(id);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, cliente);
+            return response;
+
+        }
+
+
+        [Route("api/pktcliente/{id}")]
+        public HttpResponseMessage getpktclient(string id)
+        {
+
+            List<pedido> a = repartosRepository.searchpktclient(id);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, a);
+            return response;
+
+        }
+        [Route("api/pktclienteone/{dni}/{a}")]
+        public HttpResponseMessage getonepktclient(string dni, int a)
+        {
+            pedido b = repartosRepository.onepkt(dni, a);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, b);
+            return response;
+        }
+
     }
 
 }

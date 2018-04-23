@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="27f31709ba5e45409d3b1facf17a0abf" Name="Diagram1">
+        <EntityTypeShape EntityType="repartosssModel.administrador" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="repartosssModel.cliente" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="repartosssModel.factura" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="repartosssModel.pedido" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="repartosssModel.repartidor" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="repartosssModel.fk_Factura_Administrador1" ManuallyRouted="false" />
+        <AssociationConnector Association="repartosssModel.fk_pedido_cliente1" ManuallyRouted="false" />
+        <AssociationConnector Association="repartosssModel.fk_Factura_Pedido1" ManuallyRouted="false" />
+        <AssociationConnector Association="repartosssModel.fk_Factura_Repartidor1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
