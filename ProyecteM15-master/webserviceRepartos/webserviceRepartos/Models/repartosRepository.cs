@@ -31,6 +31,13 @@ namespace webserviceRepartos.Models
             List<repartidor> a = dataContext.repartidor.ToList();
             return a;
         }
+        //Obtener lista repartidores no activos
+        public static List<repartidor> GetRepartidoresNoActivos()
+        {
+            List<repartidor> lista = dataContext.repartidor.Where(x => x.Activo.Equals(false)).ToList();
+
+            return lista;
+        }
 
         //muestra clientes por nombre
         public static List<cliente> SearchContactesByName(string contacteName)

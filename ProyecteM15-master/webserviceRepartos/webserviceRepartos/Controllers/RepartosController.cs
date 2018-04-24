@@ -40,17 +40,22 @@ namespace webserviceRepartos.Controllers
             return response;
         }
 
+            //muestra todos los repartidores no activos
+        [Route("api/repartidoresNoActivos")]
+        public HttpResponseMessage GetRepartidoresNoActivos()
+        {
+            var repartidores = repartosRepository.GetRepartidoresNoActivos();
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, repartidores);
+            return response;
+        }
 
         [Route("api/cliente/{id}")]
         public HttpResponseMessage getclitone(string id)
         {
-
             var cliente = repartosRepository.GetContacte(id);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, cliente);
             return response;
-
         }
-
 
         [Route("api/pktcliente/{id}")]
         public HttpResponseMessage getpktclient(string id)
