@@ -10,10 +10,13 @@ namespace webserviceRepartos.Controllers
 {
     public class RepartosController : ApiController
     {
+        [System.Web.Http.AcceptVerbs("GET", "POST")]
+
+        [System.Web.Http.HttpGet]
 
         // GET: api/contactes
 
-            //get de clientes con pedidos no entregados
+        //get de clientes con pedidos no entregados
         [Route("api/clientes")]
         public HttpResponseMessage Get()
         {
@@ -22,11 +25,12 @@ namespace webserviceRepartos.Controllers
             return response;
         }
 
-            // put de cuando se completa la entrega de un pedido (cambia el estado de entrega del pedido)
-        [Route("api/clientes/{id?}")]
-        public HttpResponseMessage Put(String id, [FromBody]pedido val)
+        // put de cuando se completa la entrega de un pedido (cambia el estado de entrega del pedido)
+        [HttpPutAttribute]
+        [Route("api/pedidos/{a}")]
+        public HttpResponseMessage Put(int a)
         {
-            var contacte = repartosRepository.UpdateContacte(id, val);
+            var contacte = repartosRepository.UpdatePedido(a);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, contacte);
             return response;
         }
@@ -40,7 +44,15 @@ namespace webserviceRepartos.Controllers
             return response;
         }
 
-            //muestra todos los repartidores no activos
+        [Route("api/repartidores/{id?}")]
+        public HttpResponseMessage getRepartidoresPorId(int id)
+        {
+            var contactes = repartosRepository.GetRepartidoresPorId(id);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, contactes);
+            return response;
+        }
+
+        //muestra todos los repartidores no activos
         [Route("api/repartidoresNoActivos")]
         public HttpResponseMessage GetRepartidoresNoActivos()
         {

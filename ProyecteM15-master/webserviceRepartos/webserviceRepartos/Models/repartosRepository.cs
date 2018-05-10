@@ -31,6 +31,15 @@ namespace webserviceRepartos.Models
             List<repartidor> a = dataContext.repartidor.ToList();
             return a;
         }
+
+        //Obtener repartidor por id
+        public static List<repartidor> GetRepartidoresPorId(int id)
+        {
+            List<repartidor> lista = dataContext.repartidor.Where(x => x.idRepartidor.Equals(id)).ToList();
+
+            return lista;
+        }
+
         //Obtener lista repartidores no activos
         public static List<repartidor> GetRepartidoresNoActivos()
         {
@@ -47,22 +56,14 @@ namespace webserviceRepartos.Models
         }
 
         //Actualiza la entrega de un pedido de un cliente seleccionado
-        public static cliente UpdateContacte(String dni, pedido c)
+        public static pedido UpdatePedido(int a)
         {
-            try
-            {
-                pedido c0 = dataContext.pedido.Where(x => x.cliente_DNI.Equals(dni)).SingleOrDefault();
-                c0.Entregado = "si";
-
+                pedido LP = dataContext.pedido.Where(x => x.idPedido == a).FirstOrDefault();
+                LP.Entregado = "si";
 
                 dataContext.SaveChanges();
-                return GetContacte(dni);
+                return LP;
 
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
         }
 
         //añade un nuevo cliente
