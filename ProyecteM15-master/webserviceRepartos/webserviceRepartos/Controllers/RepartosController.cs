@@ -26,16 +26,16 @@ namespace webserviceRepartos.Controllers
         }
 
         // put de cuando se completa la entrega de un pedido (cambia el estado de entrega del pedido)
-        [HttpPutAttribute]
-        [Route("api/pedidos/{a}")]
-        public HttpResponseMessage Put(int a)
+        [Route("api/pedidochange/{a}")]
+        public HttpResponseMessage get123(String a)
         {
-            var contacte = repartosRepository.UpdatePedido(a);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, contacte);
+            int b = int.Parse(a);
+            var ped = repartosRepository.p1234(b);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, ped);
             return response;
         }
 
-            //muestra todos los repartidores
+        //muestra todos los repartidores
         [Route("api/repartidores")]
         public HttpResponseMessage getrep()
         {

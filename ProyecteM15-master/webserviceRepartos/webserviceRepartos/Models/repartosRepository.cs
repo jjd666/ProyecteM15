@@ -56,14 +56,12 @@ namespace webserviceRepartos.Models
         }
 
         //Actualiza la entrega de un pedido de un cliente seleccionado
-        public static pedido UpdatePedido(int a)
+        public static pedido p1234(int a)
         {
-                pedido LP = dataContext.pedido.Where(x => x.idPedido == a).FirstOrDefault();
-                LP.Entregado = "si";
-
-                dataContext.SaveChanges();
-                return LP;
-
+            pedido LP = dataContext.pedido.Where(x => x.idPedido == a).FirstOrDefault();
+            LP.Entregado = "SI";
+            dataContext.SaveChanges();
+            return LP;
         }
 
         //añade un nuevo cliente
